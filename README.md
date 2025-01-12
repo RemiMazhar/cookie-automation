@@ -38,7 +38,7 @@ En vrai il y a quand même quelques subtilités:
 - 1 demi sachet de levure
 - papier cuisson (c'est pas un ingrédient mais je le mets parce que j'oublie toujours d'en acheter quand je fais les courses pour des cookies)
 ### Recette
-- faire ramollir (/!\ pas fondre /!\) le beurre, +∞ min à température ambiante ou quelques secondes au micro-ondes
+- faire ramollir (/!\ pas fondre /!\\) le beurre, +∞ min à température ambiante ou quelques secondes au micro-ondes
 - mélanger le beurre, le sucre, le sucre vanillé et la levure jusqu'à avoir un mélange homogène
 - rajouter les oeufs et la farine, mélanger (avec les mains c'est souvent plus facile selon à quel point le beurre est mou)
 - incorporer le chocolat et mélanger
