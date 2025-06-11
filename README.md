@@ -28,12 +28,12 @@ En vrai il y a quand même quelques subtilités:
 - masse totale : la masse totale des cookies (à mesurer manuellement)
 - quantité totale : la quantité de cookies en mol, i.e. le nombre de cookies divisé par le nombre d'Avogadro
 - surface totale : la somme des aires des cookies
-- masse moyenne  d'un cookie : masse totale divisée par le nombre de cookies
+- masse moyenne d'un cookie : masse totale divisée par le nombre de cookies
 - masse molaire : masse d'une mol de cookies (i.e. masse totale divisée par la quantité totale)
 - masse surfacique : masse totale divisée par surface totale
 - surface molaire : l'aire occupée par 1 mol de cookies, i.e. surface totale divisée par quantité totale
 - rayon de schwarschild : il faudrait compresser les cookies dans une sphère de ce rayon pour en faire un trou noir
-- rayon de schwarschild molaire : rayon de Schwarschild de 1 mol de cookies. Le rayon de Schwarschild étant proportionnel à la masse, la mesure à vraiment un sens : le rayon de notre trou noir augmente de cette valeur pour chaque mol de cookie supplémentaire
+- rayon de schwarschild molaire : rayon de Schwarschild de 1 mol de cookies. Le rayon de Schwarschild étant proportionnel à la masse, la mesure à vraiment un sens : le rayon de notre trou noir augmente de cette valeur pour chaque mol de cookies supplémentaire
 
 ## Limites
 - les mesures sont faites en supposant que la photo est une carte à l'échelle de la table, ce qui n'est vrai que dans l'approximation que la photo est prise parfaitement à la verticale et de très loin
