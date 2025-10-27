@@ -75,7 +75,7 @@ def generate_diameters(diams: list, roundnesses: list, cookies: list, total_area
         f.write('\n'.join(lines))
 
 def main():
-    global MIN_D, MAX_D
+    global MIN_D, MAX_D, CAL_SIZE
     img = cv2.imread('cookies.jpg')
     if img.shape[1] < img.shape[0] : img = cv2.rotate(img, cv2.ROTATE_90_COUNTERCLOCKWISE) # format paysage pcq j'ai décidé # AT: Bon ok
     img = cv2.resize(img, (800, 600))
