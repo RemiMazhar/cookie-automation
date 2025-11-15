@@ -98,6 +98,7 @@ Avec conda:
 ```bash
 conda create -n cookies -c pytorch -c nvidia -c conda-forge python=3.12 pytorch=2.5.1 torchvision pytorch-cuda=11.8 ultralytics typst-py && conda activate cookies
 ```
+_NB: Adaptez cette commande notamment si vous n'avez pas besoin de la dépendance pytorch-cuda si vous n'avez pas de GPU Nvidia_
 
 Pour installer conda, veuillez vous référer au site officiel: https://conda-forge.org/download/ & https://github.com/conda-forge/miniforge/blob/main/README.md#requirements-and-installers
 
