@@ -160,6 +160,9 @@ def main(img_to_process: str) -> None:
                     diams.append(d)
                     ctrs.append((cX, cY))
                     roundnesses.append(roundness)
+    if not results or all(r.masks is None for r in results):
+        print("No cookies detected in the image.")
+        return
 
 
     # Calculate minimum distance between all cookies
