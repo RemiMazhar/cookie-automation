@@ -1,11 +1,12 @@
+#let infos = json(bytes(sys.inputs.infos))
+
 #set page(header: context { if(counter(page).get().at(0)==1) [
-  #text(size: 14pt)[23/10/2025]
+  #text(size: 14pt)[#infos.date]
 ]})
 #set par(justify: true)
 #set text(font: "Arial", size: 11pt)
 #set page(numbering: "1", number-align: right, paper: "a4")
 #set document(title: [Cookies])
-#let infos = json(bytes(sys.inputs.infos))
 
 
 #align(center)[#image("assets/École_polytechnique_signature.svg.png", alt: "Logo X", height: 60%)]
