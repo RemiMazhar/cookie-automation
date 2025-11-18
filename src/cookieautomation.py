@@ -104,7 +104,7 @@ def main(img_to_process: str) -> None:
     scale = c.get_calib(img, CAL_SIZE)
     print(f'échelle: {1/scale:.2f} px/cm')
 
-    model = YOLO("runs/segment/train3/weights/best.pt")  # load a pretrained YOLO model
+    model = YOLO("runs/segment/train3/weights/best.onnx")  # load a pretrained YOLO model
     results = model.predict(source=img, conf=options.confidence, save=False, device="cpu", show=False, imgsz=1920)  # predict on an image
 
     total_mask = np.zeros(img.shape[:2], dtype=np.uint8)
