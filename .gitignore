@@ -2,10 +2,6 @@ src/out
 .vscode
 
 # AI related
-runs/segment/train*/*.png
-runs/segment/train*/*.jpg
-runs/segment/train*/*.csv
-runs/segment/train*/*.yaml
 ai
 yolo*.pt
 cookies*.jpg
