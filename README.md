@@ -96,7 +96,7 @@ _(Pro tip: Sur linux, vous évitez beaucoup de ces problèmes)_
 ### Installation via conda
 Avec conda:
 ```bash
-conda create -n cookies -c pytorch -c nvidia -c conda-forge python=3.12 pytorch=2.5.1 torchvision pytorch-cuda=11.8 ultralytics typst-py && conda activate cookies
+conda create -n cookies -c pytorch -c nvidia -c conda-forge python=3.12 pytorch=2.5.1 torchvision pytorch-cuda=11.8 ultralytics typst-py onnx onnxruntime && conda activate cookies
 ```
 _NB: Adaptez cette commande notamment si vous n'avez pas besoin de la dépendance pytorch-cuda si vous n'avez pas de GPU Nvidia_
 
