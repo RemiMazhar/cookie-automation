@@ -95,13 +95,13 @@ def generate_report(cookies: list) -> None:
 
 
 def main(img_to_process: str) -> None:
-    global CAL_SIZE, CURR_DIR, OUT_DIR, BIBLICALLY_ACCURATE_COOKIE_SPACING, options
+    global CURR_DIR, OUT_DIR, BIBLICALLY_ACCURATE_COOKIE_SPACING, options
     img = cv2.imread(f'{img_to_process}')
     if img.shape[1] < img.shape[0] : img = cv2.rotate(img, cv2.ROTATE_90_COUNTERCLOCKWISE) # format paysage pcq j'ai décidé # AT: Bon ok
     img = cv2.resize(img, (800, 600), interpolation=cv2.INTER_NEAREST)
 
     c = Calibrator()
-    scale = c.get_calib(img, CAL_SIZE)
+    scale = c.get_calib(img, options.reference)
     print(f'échelle: {1/scale:.2f} px/cm')
 
     model = YOLO("runs/segment/train3/weights/best.onnx")  # load a pretrained YOLO model
