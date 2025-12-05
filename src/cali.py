@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 
 class Calibrator:
-    def __init__(self):
+    def __init__(self) -> None:
         self.screen_pos = []
 
     def callback(self, event, x: float, y: float, flags, param) -> None:
