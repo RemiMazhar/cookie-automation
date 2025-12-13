@@ -56,25 +56,25 @@ def generate_diameters(diams: list, roundnesses: list, cookies: list, total_area
     sch_rad = 2 * 6.67e-11 / 2.998e8**2 * total_mass / 1000
     molar_sch_rad = 2 * 6.67e-11 / 2.998e8**2 * molar_mass / 1000
 
-    with open(f'{OUT_DIR}/diameters.csv', 'w') as f:
-        lines = ['numero,diametre (cm),rotondite'] + [f'{i},{d:.2f},{r:.2f}' for i,(ctr,d,r) in enumerate(cookies)]
+    with open(f'{OUT_DIR}/diameters.csv', 'w', encoding='utf-8') as f:
+        lines = ['numéro,diamètre (cm),rotondité'] + [f'{i},{d:.2f},{r:.2f}' for i,(ctr,d,r) in enumerate(cookies)]
         f.write('\n'.join(lines))
 
-    with open(f'{OUT_DIR}/stats.csv', 'w') as f:
+    with open(f'{OUT_DIR}/stats.csv', 'w', encoding='utf-8') as f:
         lines = ""
-        lines += f'diametre moyen (cm),{avg_diam:.2f}\n'
-        lines += f'ecart-type du diametre (cm),{std_diams:.2f}\n'
-        lines += f'rotondite moyenne,{avg_roundness:.2f}\n'
-        lines += f'ecart-type de la rotondite,{std_roundnesses:.2f}\n'
+        lines += f'diamètre moyen (cm),{avg_diam:.2f}\n'
+        lines += f'écart-type du diamètre (cm),{std_diams:.2f}\n'
+        lines += f'rotondité moyenne,{avg_roundness:.2f}\n'
+        lines += f'écart-type de la rotondité,{std_roundnesses:.2f}\n'
         lines += f'masse totale (g),{total_mass:.2f}\n'
-        lines += f'quantite totale (mol),{qte:.2e}\n'
-        lines += f'surface totale (cm^2),{total_area:.2f}\n'
+        lines += f'quantité totale (mol),{qte:.2e}\n'
+        lines += f'surface totale (cm²),{total_area:.2f}\n'
         lines += f'masse moyenne  d\'un cookie (g),{avg_mass:.2f}\n'
         lines += f'masse molaire (masse lunaire/mol),{molar_mass / 1000 / 8.1e22:.2f}\n'
-        lines += f'masse surfacique (g/cm^2),{mass_per_area:.2f}\n'
+        lines += f'masse surfacique (g/cm²),{mass_per_area:.2f}\n'
         lines += f'surface molaire (surface terrestre/mol),{area_per_qte / 1e8 / 510e6:.2e}\n'
         lines += f'rayon de schwarschild (m),{sch_rad:.2e}\n'
-        lines += f'rayon de schwarschild molaire (micro m/mol),{molar_sch_rad * 1e6:.2f}\n'
+        lines += f'rayon de schwarschild molaire (µm/mol),{molar_sch_rad * 1e6:.2f}\n'
         f.write(lines)
 
 def generate_report(cookies: list) -> None:
