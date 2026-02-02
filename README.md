@@ -22,6 +22,7 @@ Il a déjà été utilisé pour départager un débat sur qui avait fait le plus
     - [Installation via pip](#installation-via-pip)
     - [Installation via conda](#installation-via-conda)
     - [Installation de typst](#installation-de-typst)
+    - [Utilisation du programme](#utilisation-du-programme)
   - [Erreurs connues](#erreurs-connues)
   - [Train votre propre modèle (optionnel)](#train-votre-propre-modèle-optionnel)
 
