@@ -101,20 +101,20 @@ En vrai il y a quand même quelques subtilités:
 #pagebreak()
 = Données brutes
 == Numérotation
-#image("../src/out/res.png", alt: "Image numérotée des cookies")
+#image(infos.res_image, alt: "Image numérotée des cookies")
 
 #pagebreak()
 == Tableau des diamètres et des rotondités
-#let diams = csv("../src/out/diameters.csv")
+#let diams = csv(infos.diameters_csv)
 
 #table(columns: 3, ..diams.flatten())
 
 #pagebreak()
 = Résultats statistiques
 == Distribution des diamètres et des rotondités
-#image("../src/out/diam_histogram.png", alt: "Histogramme des diamètres", height: 40%)
-#image("../src/out/roundness_histogram.png", alt: "Histogramme des rotondités", height: 40%)
-#image("../src/out/roundness_diam_scatter.png", alt: "Dispersion rotondité/diamètre")
+#image(infos.diam_histogram, alt: "Histogramme des diamètres", height: 40%)
+#image(infos.roundness_histogram, alt: "Histogramme des rotondités", height: 40%)
+#image(infos.roundness_scatter, alt: "Dispersion rotondité/diamètre")
 == Données globales
-#let stats = csv("../src/out/stats.csv")
+#let stats = csv(infos.stats_csv)
 #table(columns: 2, ..stats.flatten())

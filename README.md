@@ -22,6 +22,7 @@ Il a déjà été utilisé pour départager un débat sur qui avait fait le plus
     - [Installation via pip](#installation-via-pip)
     - [Installation via conda](#installation-via-conda)
     - [Installation de typst](#installation-de-typst)
+    - [Utilisation du programme](#utilisation-du-programme)
   - [Erreurs connues](#erreurs-connues)
   - [Train votre propre modèle (optionnel)](#train-votre-propre-modèle-optionnel)
 
@@ -88,7 +89,7 @@ Ce projet utilise:
 ### Installation via pip
 Pour utiliser ce projet via pip, veuillez utiliser la commande suivante:
 ```bash
-pip install -r requirements.txt
+pip install -e .
 ```
 **Veuillez noter qu'il est recommandé d'installer ce projet avec un environnement conda pour éviter énormément de problème avec les dépendances qui requièrent de la compilation sur votre machine.**
 _(Pro tip: Sur linux, vous évitez beaucoup de ces problèmes)_
@@ -102,9 +103,24 @@ _NB: Adaptez cette commande notamment si vous n'avez pas besoin de la dépendanc
 
 Pour installer conda, veuillez vous référer au site officiel: https://conda-forge.org/download/ & https://github.com/conda-forge/miniforge/blob/main/README.md#requirements-and-installers
 
+Ensuite suivez la même procédure que pour pip en faisant:
+```bash
+pip install -e .
+```
+
 ### Installation de typst
 Typst est un langage de mise en page similaire à LaTeX, mais plus moderne et plus simple d'utilisation. Pour l'installer, veuillez suivre les instructions sur le repo officiel: https://github.com/typst/typst/blob/main/README.md#installation 
 Tout ce qui importe est d'avoir la commande `typst` disponible dans votre PATH.
+
+### Utilisation du programme
+```bash
+cookie-automation [options] photo.png photo2.png
+```
+
+for help just use:
+```bash
+cookie-automation -h
+```
 
 ## Erreurs connues
 - Sous linux et avec Wayland, vous pourriez avoir un warning voire une erreur du style:

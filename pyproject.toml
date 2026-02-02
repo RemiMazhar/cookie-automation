@@ -1,0 +1,69 @@
+[project]
+name = "cookie-automation"
+version = "0.0.1"
+description = "parce que la taille, ça compte, voici une manière objective de mesurer et compter automatiquement des cookies"
+readme = "README.md"
+requires-python = "==3.12.*"
+classifiers = [
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: OS Independent",
+]
+license = "MIT"
+license-files = ["LICEN[CS]E*"]
+
+dependencies = [
+    "ultralytics==8.3.221",
+    "typst==0.14.1",
+    "numpy>=2.3.0",
+    "torch==2.5.1",
+    "torchvision==0.20.1",
+    "onnx",
+    "onnxruntime"
+]
+
+[project.urls]
+Homepage = "https://github.com/RemiMazhar/cookie-automation"
+Issues = "https://github.com/RemiMazhar/cookie-automation/issues"
+
+[build-system]
+requires = ["setuptools >= 77.0.3"]
+build-backend = "setuptools.build_meta"
+
+
+[project.optional-dependencies]
+test = [
+    "pytest>=8.4.1",
+    "pytest-cov>=6.2.1",
+    "pytest-custom_exit_code>=0.3.0",
+    "pytest-asyncio"
+]
+
+[tool.coverage.run]
+branch = true
+omit = ["tests/*"]
+
+[tool.coverage.report]
+# Regexes for lines to exclude from consideration
+exclude_also = [
+    # Don't complain if non-runnable code isn't run:
+    "if __name__ == .__main__.:",
+    ]
+
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+addopts = [
+    "--import-mode=importlib",
+    "--cov",
+    "-ra",
+    "-vvv"
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project.scripts]
+cookie-automation = "cookie_automation.cookieautomation:run"

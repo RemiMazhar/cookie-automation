@@ -3,7 +3,7 @@ import numpy as np
 import cv2
 import matplotlib.pyplot as plt
 from scipy.stats import linregress
-from cali import Calibrator
+from cookie_automation.cali import Calibrator
 from os import path
 from pathlib import Path
 from optparse import OptionParser
@@ -11,8 +11,9 @@ from ultralytics import YOLO
 
 # Path setup
 CURR_DIR = path.dirname(path.abspath(__file__)).replace('\\', '/')
-OUT_DIR = f"{CURR_DIR}/out"
+OUT_DIR = f"out"
 Path(OUT_DIR).mkdir(parents=True, exist_ok=True)
+options = None
 
 CAL_SIZE: float = 90 # longueur du trait de calibration (pour moi le bord de la table) en cm
 BIBLICALLY_ACCURATE_COOKIE_SPACING: float = 30 # espacement minimum entre cookies en cm pour qu'ils soient considérés comme sur des "lignes" différentes
@@ -80,18 +81,45 @@ def generate_diameters(diams: list, roundnesses: list, cookies: list, total_area
 def generate_report(cookies: list) -> None:
     global OUT_DIR, CURR_DIR
     """génère un rapport PDF à partir d'un template typst"""
-    from json import dumps # AT: Je pourrais use orjson pour avoir des vraies perf mais ça sert à rien ici pour dump 4 petits champs
+    from json import dumps
+    from os.path import abspath
+    from shutil import copy2
+    
+    # Get absolute paths for all output files
+    out_dir_abs = abspath(OUT_DIR).replace('\\', '/')
+    
+    # Copy template to output directory
+    template_copy = f"{out_dir_abs}/main.typ"
+    copy2(f"{CURR_DIR}/templates/main.typ", template_copy)
+    
+    # Copy assets directory if it exists
+    assets_src = f"{CURR_DIR}/templates/assets"
+    assets_dst = f"{out_dir_abs}/assets"
+    if path.exists(assets_src):
+        from shutil import copytree
+        import os
+        if os.path.exists(assets_dst):
+            import shutil
+            shutil.rmtree(assets_dst)
+        copytree(assets_src, assets_dst)
+    
     infos = {
         "date": options.date,
         "author": options.author,
         "dest": options.dest,
         "nb_cookies": len(cookies),
+        "res_image": "res.png",
+        "diameters_csv": "diameters.csv",
+        "diam_histogram": "diam_histogram.png",
+        "roundness_histogram": "roundness_histogram.png",
+        "roundness_scatter": "roundness_diam_scatter.png",
+        "stats_csv": "stats.csv",
     }
     sys_inputs = {
         "infos": dumps(infos)
     }
     import typst
-    typst.compile(input=f"{CURR_DIR}/../templates/main.typ", output=f'{OUT_DIR}/report.pdf', root=f"{CURR_DIR}/..", sys_inputs=sys_inputs)
+    typst.compile(input=template_copy, output=f'{out_dir_abs}/report.pdf', sys_inputs=sys_inputs)
 
 
 def main(img_to_process: str) -> None:
@@ -104,7 +132,7 @@ def main(img_to_process: str) -> None:
     scale = c.get_calib(img, options.reference)
     print(f'échelle: {1/scale:.2f} px/cm')
 
-    model = YOLO("runs/segment/train3/weights/best.onnx")  # load a pretrained YOLO model
+    model = YOLO(f"{CURR_DIR}/models/best.onnx", task="segment")  # load a pretrained YOLO model
     results = model.predict(source=img, conf=options.confidence, save=False, device="cpu", show=False, imgsz=1920)  # predict on an image
 
     total_mask = np.zeros(img.shape[:2], dtype=np.uint8)
@@ -236,7 +264,8 @@ def main(img_to_process: str) -> None:
     print('done (hopefully)')
 
 
-if __name__ == "__main__":
+def run():
+    global options
     from datetime import datetime
     parser = OptionParser(usage="Usage: %prog [options] FILE", description="Automates the detection and analysis of cookies in an image.")
     parser.add_option("--date", dest="date", help="Date of the analysis, use dd/mm/yyyy format. Leave empty for today", metavar="DATE", default=datetime.now().strftime("%d/%m/%Y"))
@@ -253,3 +282,6 @@ if __name__ == "__main__":
 
     for arg in args:
         main(arg)
+
+if __name__ == "__main__":
+    pass
